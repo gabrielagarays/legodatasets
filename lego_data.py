@@ -2,10 +2,10 @@ import pandas as pd
 import kagglehub
 from kagglehub import KaggleDatasetAdapter
 
-# Archivo dentro del dataset
+# Archive from dataset
 file_path = "colors.csv"
 
-# Cargar dataset
+# Load dataset
 df = kagglehub.load_dataset(
     KaggleDatasetAdapter.PANDAS,
     "rtatman/lego-database",
@@ -17,7 +17,7 @@ print(df.head())
 
 lego_df = df
 
-#Analizar los colores más utilizados en LEGO y su distribución.
+#Colors commons in LEGO 
 print("\nINFO:")
 print(df.info())
 
@@ -27,4 +27,12 @@ print(df.describe())
 print("\nCOLUMNAS:")
 print(df.columns)
 
+#values in columms
+print("\nValores únicos en is_trans:")
+print(df['is_trans'].unique())
 
+#rename values
+df['is_trans'] = df['is_trans'].map({'f': 'No', 't': 'Sí'})
+
+print("\nConteo de valores en is_trans:")
+print(df['is_trans'].value_counts())
