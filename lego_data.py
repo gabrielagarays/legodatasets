@@ -36,3 +36,12 @@ df['is_trans'] = df['is_trans'].map({'f': 'No', 't': 'Sí'})
 
 print("\nConteo de valores en is_trans:")
 print(df['is_trans'].value_counts())
+
+#Numbers to porcent
+print("\nPorcentaje de transparencia:")
+print(df['is_trans'].value_counts(normalize=True) * 100)
+
+# Export cleaned dataset
+df.to_csv("lego_colors_clean.csv", index=False)
+
+print("\nArchivo exportado correctamente")
